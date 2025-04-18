@@ -3,12 +3,14 @@
 import { useCartContext } from "@/app/CartContext";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 function Page() {
   const { pid } = useParams();
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1); // default to 1 for better UX
   const { state, dispatch } = useCartContext();
+
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${pid}`)
@@ -23,6 +25,7 @@ function Page() {
           type: "addtocart",
           payload: product,
         });
+        toast.success(`${product.title.slice(0, 20)} added to cart`);
       }
       setQuantity(1); // reset to 1 after adding
     } else {

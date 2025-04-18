@@ -28,11 +28,11 @@ function CartPage() {
   const shippingCost = 50;
 
   return (
-    <section className="p-10 bg-[#f9f9f9] min-h-screen">
-      <div className="max-w-6xl mx-auto">
+    <section className="p-4 sm:p-6 md:p-10 bg-[#f9f9f9] min-h-screen">
+      <div className="max-w-6xl mx-auto space-y-10">
         {/* Cart Table */}
-        <div className="bg-white shadow rounded-lg overflow-hidden mb-8">
-          <table className="w-full text-left border-separate">
+        <div className="bg-white shadow rounded-lg overflow-hidden mb-8 overflow-x-auto">
+          <table className="w-full text-left border-separate min-w-[600px]">
             <thead className="bg-orange-500 text-sm uppercase">
               <tr>
                 <th className="p-4 text-white">Product</th>
@@ -70,7 +70,9 @@ function CartPage() {
                       >
                         -
                       </button>
-                      <span className="px-4 text-black">{String(item.quantity).padStart(2, "0")}</span>
+                      <span className="px-4 text-black text-sm sm:text-base">
+                        {String(item.quantity).padStart(2, "0")}
+                      </span>
                       <button
                         onClick={() => handleIncrement(item)}
                         className="px-2 text-lg text-orange-500"
@@ -95,7 +97,8 @@ function CartPage() {
             </tbody>
           </table>
         </div>
-  {/* Totals */}
+
+        {/* Totals Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="bg-white p-6 shadow rounded-lg">
             <h2 className="text-lg font-bold mb-4 text-black">Cart Totals</h2>
@@ -106,16 +109,23 @@ function CartPage() {
             <div className="flex justify-between mb-2">
               <p className="text-black">Shipping</p>
               <p>
-                <span className="text-orange-500 font-medium">Flat rate: ${shippingCost}</span>
+                <span className="text-orange-500 font-medium">
+                  Flat rate: ${shippingCost}
+                </span>
               </p>
             </div>
             <p className="text-sm text-gray-600 mb-4">
-              Shipping to <span className="font-medium">Banasree, 1219 Dhaka</span>{" "}
-              <span className="text-orange-500 cursor-pointer">Change Address</span>
+              Shipping to{" "}
+              <span className="font-medium">Banasree, 1219 Dhaka</span>{" "}
+              <span className="text-orange-500 cursor-pointer">
+                Change Address
+              </span>
             </p>
             <div className="flex justify-between text-lg font-semibold mb-4">
               <p className="text-black">Total</p>
-              <p className="text-black">${(subtotal + shippingCost).toFixed(2)}</p>
+              <p className="text-black">
+                ${(subtotal + shippingCost).toFixed(2)}
+              </p>
             </div>
             <button className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-md text-center font-bold">
               Proceed to Checkout
