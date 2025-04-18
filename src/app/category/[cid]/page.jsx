@@ -2,6 +2,7 @@
 import { useCartContext } from "@/app/CartContext";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 function Page() {
   const [products, setProducts] = useState([]);
@@ -18,6 +19,11 @@ function Page() {
         setProducts(filteredData);
       });
   }, [cid]);
+
+  const handleAddToCart = (product) => {
+    dispatch({ type: "addtocart", payload: product });
+    toast.success(`${product.title.slice(0, 20)} added to cart`);
+  };
 
   return (
     <section className="bg-[#f9f9f9] min-h-screen py-8">
@@ -53,9 +59,7 @@ function Page() {
               </div>
               <div className="flex flex-col sm:flex-row gap-2 mt-auto">
                 <button
-                  onClick={() =>
-                    dispatch({ type: "addtocart", payload: product })
-                  }
+                  onClick={() => handleAddToCart(product)}
                   className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm px-4 py-2 rounded-md w-full"
                 >
                   Add to cart
