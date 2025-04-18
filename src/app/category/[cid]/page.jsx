@@ -1,5 +1,6 @@
 "use client";
 import { useCartContext } from "@/app/CartContext";
+import Link from "next/link";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -37,6 +38,8 @@ function Page() {
               key={product.id}
               className="border border-orange-300 rounded-xl p-4 bg-white shadow hover:shadow-md transition-all flex flex-col"
             >
+              <Link href={`/Details/${product.id}`} className="w-full">
+              
               <img
                 className="w-full h-52 sm:h-60 object-contain mb-4"
                 src={product.image}
@@ -56,7 +59,10 @@ function Page() {
                   50%
                 </span>
                 <s className="text-gray-400 text-sm">${product.price}</s>
+                
               </div>
+              </Link>
+
               <div className="flex flex-col sm:flex-row gap-2 mt-auto">
                 <button
                   onClick={() => handleAddToCart(product)}
@@ -64,9 +70,10 @@ function Page() {
                 >
                   Add to cart
                 </button>
+                <Link href={`/Details/${product.id}`} className="w-full">
                 <button className="border border-orange-400 text-orange-500 font-semibold text-sm px-4 py-2 rounded-md w-full">
                   Details
-                </button>
+                </button></Link>
               </div>
             </div>
           ))}

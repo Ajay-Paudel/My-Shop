@@ -28,6 +28,7 @@ function Page() {
               key={product.id}
               className="border border-orange-300 rounded-xl p-4 bg-white shadow hover:shadow-md transition-all flex flex-col"
             >
+              <Link href={`/Details/${product.id}`} className="w-full">
               <img
                 src={product.image}
                 alt={product.title}
@@ -48,6 +49,9 @@ function Page() {
                 </span>
                 <s className="text-gray-400 text-sm">${product.price}</s>
               </div>
+              </Link>
+
+
               <div className="flex flex-col sm:flex-row gap-2 mt-auto">
                 <button
                   onClick={() => handleAddToCart(product)}
