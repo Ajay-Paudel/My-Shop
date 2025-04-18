@@ -116,7 +116,7 @@ function CartPage() {
             </div>
             <p className="text-sm text-gray-600 mb-4">
               Shipping to{" "}
-              <span className="font-medium">Banasree, 1219 Dhaka</span>{" "}
+              <span className="font-medium">Mumbai Maharashtra 400001</span>{" "}
               <span className="text-orange-500 cursor-pointer">
                 Change Address
               </span>
